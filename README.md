@@ -138,6 +138,38 @@ The optimized output will be in the `build/` folder, ready to deploy to any stat
 - **On refresh**: reads from `localStorage` (preserves your changes)
 - **To reset**: run `localStorage.removeItem('transactions')` in the browser console
 
+## Technical Decisions and Trade-offs
+
+**State Management — useState + localStorage over Redux/Context API.**
+With only 4 routes and props passed at most 2 levels deep, a global state library would add boilerplate without benefit. localStorage syncs via useEffect on every state change, giving persistence across refreshes without a backend. We'd migrate to Context or Zustand only if the app grew to 10+ routes needing cross-component updates.
+
+**Routing — React Router v6 pinned over v7.**
+v7 dropped the BrowserRouter API and introduced loader/action patterns that require restructuring. Our 4 static routes don't need data loaders or nested layouts, so v6's simpler BrowserRouter + Routes pattern avoids unnecessary migration complexity.
+
+**Charts — Recharts over Chart.js/D3.**
+Recharts provides declarative React components (BarChart, PieChart, AreaChart) that compose naturally in JSX with custom tooltips. D3 requires imperative DOM manipulation conflicting with React's model. The ~180KB bundle cost is justified since charts are the dashboard's core feature.
+
+**Data — JSON seed files + localStorage over API/Database.**
+Mock data in src/data/ seeds initial state; changes persist to localStorage. This eliminates backend, database, and auth dependencies entirely. Trade-off: no multi-device sync and a ~5MB storage limit. A production version would use a REST API or Firebase.
+
+**Pagination — Client-side over server-side.**
+All transactions load into memory and get sliced by page/pageSize. With 40-100 records this is instant. Server-side pagination would only be needed at 10,000+ rows where loading everything upfront becomes a performance issue.
+
+**Styling — Tailwind CSS utility classes over CSS Modules.**
+Co-located styles in JSX eliminate file-switching. Dark mode uses Tailwind's dark: variant with class-based toggling persisted to localStorage. The verbose class strings are acceptable at this project size; a larger codebase would extract patterns with @apply directives.
+
+**Build — CI=false for Vercel.**
+Create React App treats warnings as errors when CI=true (Vercel's default). Setting CI=false in the build script prevents unused-variable warnings from failing deployment. In a team setting we'd fix all warnings instead.
+
+**Currency — Hardcoded INR (₹) over i18n.**
+All currency rendering uses the ₹ symbol directly. Implementing Intl.NumberFormat with locale detection and multi-currency support would be over-engineering for a single-region dashboard.
+
+**Role-based Access — Client-side UI toggle over authentication.**
+The Viewer/Admin dropdown hides CRUD buttons for viewers. This is cosmetic access control for demo purposes. Production would require JWT-based auth with server-side mutation validation.
+
+**Notifications — Date-window filtering over push notifications.**
+Reminders use notifyFrom/notifyUntil date ranges. The bell icon filters active reminders on each render. No push notifications or background workers — alerts only appear when the user opens the app.
+
 ## Design Decisions
 
 - **No gradients** - Clean white cards with subtle borders and left-accent colors

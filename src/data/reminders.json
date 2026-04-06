@@ -1,0 +1,112 @@
+[
+  {
+    "id": 1,
+    "title": "Apartment Rent",
+    "category": "Housing",
+    "amount": 16000,
+    "dueDate": "2026-04-07",
+    "notifyFrom": "2026-04-02",
+    "notifyUntil": "2026-04-07",
+    "autopay": false
+  },
+  {
+    "id": 2,
+    "title": "Electricity Bill",
+    "category": "Utilities",
+    "amount": 2200,
+    "dueDate": "2026-04-08",
+    "notifyFrom": "2026-04-03",
+    "notifyUntil": "2026-04-08",
+    "autopay": true
+  },
+  {
+    "id": 3,
+    "title": "Internet Recharge",
+    "category": "Utilities",
+    "amount": 799,
+    "dueDate": "2026-04-10",
+    "notifyFrom": "2026-04-05",
+    "notifyUntil": "2026-04-10",
+    "autopay": true
+  },
+  {
+    "id": 4,
+    "title": "Credit Card Payment",
+    "category": "Finance",
+    "amount": 15000,
+    "dueDate": "2026-04-12",
+    "notifyFrom": "2026-04-07",
+    "notifyUntil": "2026-04-12",
+    "autopay": false
+  },
+  {
+    "id": 5,
+    "title": "Phone Bill",
+    "category": "Utilities",
+    "amount": 499,
+    "dueDate": "2026-04-15",
+    "notifyFrom": "2026-04-10",
+    "notifyUntil": "2026-04-15",
+    "autopay": true
+  },
+  {
+    "id": 6,
+    "title": "Car Insurance",
+    "category": "Insurance",
+    "amount": 6000,
+    "dueDate": "2026-04-18",
+    "notifyFrom": "2026-04-13",
+    "notifyUntil": "2026-04-18",
+    "autopay": false
+  },
+  {
+    "id": 7,
+    "title": "Gym Membership",
+    "category": "Health",
+    "amount": 1500,
+    "dueDate": "2026-04-20",
+    "notifyFrom": "2026-04-15",
+    "notifyUntil": "2026-04-20",
+    "autopay": true
+  },
+  {
+    "id": 8,
+    "title": "Streaming Services",
+    "category": "Entertainment",
+    "amount": 499,
+    "dueDate": "2026-04-22",
+    "notifyFrom": "2026-04-17",
+    "notifyUntil": "2026-04-22",
+    "autopay": true
+  },
+  {
+    "id": 9,
+    "title": "Water Bill",
+    "category": "Utilities",
+    "amount": 800,
+    "dueDate": "2026-04-25",
+    "notifyFrom": "2026-04-20",
+    "notifyUntil": "2026-04-25",
+    "autopay": false
+  },
+  {
+    "id": 10,
+    "title": "Cloud Storage Plan",
+    "category": "Subscriptions",
+    "amount": 130,
+    "dueDate": "2026-04-28",
+    "notifyFrom": "2026-04-23",
+    "notifyUntil": "2026-04-28",
+    "autopay": true
+  },
+  {
+    "id": 11,
+    "title": "Health Insurance",
+    "category": "Insurance",
+    "amount": 8000,
+    "dueDate": "2026-05-01",
+    "notifyFrom": "2026-04-26",
+    "notifyUntil": "2026-05-01",
+    "autopay": false
+  }
+]

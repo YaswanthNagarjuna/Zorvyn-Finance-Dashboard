@@ -1,70 +1,156 @@
-# Getting Started with Create React App
+# Zorvyn Finance Dashboard
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A clean, minimal, and feature-rich personal finance dashboard built with React, Tailwind CSS, and Recharts. Track income and expenses, manage bill reminders, and analyze spending patterns with interactive visualizations.
 
-## Available Scripts
+## Features
 
-In the project directory, you can run:
+### Dashboard (Overview)
+- Time-based greeting (Good Morning / Afternoon / Evening)
+- Summary cards for Total Balance, Income, and Expenses with rupee currency
+- Balance trend area chart showing running balance over time
+- Spending breakdown donut chart with monthly dropdown filter
+- Upcoming bills section showing nearest due reminders
 
-### `npm start`
+### Transactions
+- Paginated table (default 10 rows, options: 10 / 25 / 50 / 100)
+- Search by category or note
+- Filter by type (income/expense), category, and date range
+- Color-coded category badges and type indicators
+- Add, edit, and delete transactions (admin role only)
+- Export filtered transactions to CSV
+- Transaction count and net total in footer
+- Data persists to localStorage across page refreshes
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### Reminders
+- Upcoming bill tracker with due date countdown
+- Stat cards: Due This Week, Overdue Bills, Scheduled Total
+- Auto-pay badge indicator
+- Status chips: overdue (red), due today (amber), upcoming (teal)
+- Notification bell in navbar with unread count and mark-as-read
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### Insights
+- 4 stat cards: Total Income, Total Expenses, Net Savings, Savings Rate
+- Monthly Income vs Expenses grouped bar chart with per-month savings summary
+- Spending by Category horizontal bar chart (all-time aggregate)
+- Category Spend by Month comparison chart (Jan / Feb / Mar side-by-side)
+- Highest spending category with daily average
+- Top 5 largest expenses list
+- Contextual savings message banner
 
-### `npm test`
+### General
+- Dark mode toggle (persisted to localStorage, respects system preference)
+- Role switcher (Viewer / Admin) for role-based UI
+- Responsive sidebar navigation with active state highlighting
+- Page titles in navbar that update based on current route
+- Custom SVG favicon with Zorvyn branding
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Tech Stack
 
-### `npm run build`
+| Layer | Technology |
+|-------|-----------|
+| Framework | React 19 |
+| Routing | React Router DOM 6 |
+| Styling | Tailwind CSS |
+| Charts | Recharts |
+| Icons | React Icons (Feather) |
+| Date Utils | date-fns |
+| Build Tool | Create React App |
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Project Structure
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+```
+finance_dashboard/
+├── public/
+│   ├── favicon.svg              # Custom Zorvyn favicon
+│   ├── index.html               # HTML template
+│   └── manifest.json
+├── src/
+│   ├── components/
+│   │   ├── Dashboard.js         # Overview page with greeting, cards, charts, bills
+│   │   ├── Transactions.js      # Transaction table with filters and pagination
+│   │   ├── TransactionForm.js   # Add/edit transaction form modal
+│   │   ├── Reminders.js         # Bill reminders page
+│   │   ├── Insights.js          # Analytics with monthly comparison charts
+│   │   ├── Sidebar.js           # Fixed sidebar navigation
+│   │   ├── SummaryCards.js      # Balance, income, expense cards
+│   │   ├── BalanceTrendChart.js # Running balance area chart
+│   │   └── SpendingBreakdownChart.js # Donut chart with month filter
+│   ├── data/
+│   │   ├── transactions.json    # 3 months of mock transaction data (Jan-Mar 2026)
+│   │   └── reminders.json       # 12 bill reminders (Apr-May 2026)
+│   ├── App.js                   # Root component with routing, navbar, state management
+│   ├── index.js                 # React entry point
+│   └── index.css                # Tailwind imports
+├── tailwind.config.js
+├── postcss.config.js
+├── package.json
+└── README.md
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Mock Data
 
-### `npm run eject`
+### Transactions (`src/data/transactions.json`)
+- 40 transactions across January, February, and March 2026
+- 10 categories: Salary, Freelance, Rent, Groceries, Transport, Dining, Shopping, Utilities, Entertainment, Healthcare
+- Realistic amounts in INR (rupees)
+- Mix of income (salary, freelance) and varied daily expenses
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### Reminders (`src/data/reminders.json`)
+- 12 bill reminders spanning April-May 2026
+- Categories: Housing, Utilities, Finance, Insurance, Health, Entertainment, Subscriptions
+- Each has a 5-day notification window before the due date
+- Mix of autopay and manual payment bills
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Getting Started
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+### Prerequisites
+- Node.js (v18 or higher recommended)
+- npm
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+### Installation
 
-## Learn More
+```sh
+git clone <repository-url>
+cd finance_dashboard
+npm install
+```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### Development
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+```sh
+npm start
+```
 
-### Code Splitting
+Opens at [http://localhost:3000](http://localhost:3000).
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+### Production Build
 
-### Analyzing the Bundle Size
+```sh
+npm run build
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+The optimized output will be in the `build/` folder, ready to deploy to any static hosting service (Vercel, Netlify, GitHub Pages, etc.).
 
-### Making a Progressive Web App
+## Data Persistence
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+- **First visit**: loads seed data from `transactions.json`
+- **After changes**: saves to `localStorage` automatically
+- **On refresh**: reads from `localStorage` (preserves your changes)
+- **To reset**: run `localStorage.removeItem('transactions')` in the browser console
 
-### Advanced Configuration
+## Design Decisions
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+- **No gradients** - Clean white cards with subtle borders and left-accent colors
+- **Teal as primary accent** - Used for active states, buttons, and highlights
+- **Border-based section separation** - Every card/section has `border border-gray-200` for clear visual hierarchy
+- **SVG icons over emojis** - Consistent look across platforms (except greeting icon)
+- **Rupee currency** - All amounts displayed with the Indian Rupee symbol
+- **localStorage over backend** - Keeps the app self-contained with no server dependency
 
-### Deployment
+## License
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+This project is for educational and demo purposes.
 
-### `npm run build` fails to minify
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Built with React, Tailwind CSS, and Recharts.

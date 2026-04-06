@@ -131,6 +131,9 @@ npm run build
 
 The optimized output will be in the `build/` folder, ready to deploy to any static hosting service (Vercel, Netlify, GitHub Pages, etc.).
 
+### Deployed On
+- https://zorvyn-finance-dashboard-teal.vercel.app/
+
 ## Data Persistence
 
 - **First visit**: loads seed data from `transactions.json`
